@@ -1,6 +1,6 @@
 const express = require('express');
 const dotnev = require('dotenv');
-
+const logger = require('./middleware/logger')
 // route files
 const bootcamps = require('./routes/bootcamp');
 
@@ -9,7 +9,7 @@ const bootcamps = require('./routes/bootcamp');
 dotnev.config({ path: './config.env' });
 
 const app = express();
-
+app.use(logger);
 //mount routes
 app.use('/api/v1/bootcamps', bootcamps);
 
